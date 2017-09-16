@@ -80,25 +80,26 @@ for row in acc_liste:
     # i_acc_liste=i_acc_liste+1
 # print ('clean_acc_liste:',clean_acc_liste)
 vit_liste=[]
-#vitesse nulle au départ
-vit_liste=integrateList(clean_acc_liste, [Decimal(0), Decimal(0),Decimal(0),Decimal(0)])
+#vitesse deu départ : le premier échantillon
+vit_init = clean_acc_liste.pop() # ça retire le premier élément
+vit_liste=integrateList(clean_acc_liste, vit_init)
 # print ("vit_liste",vit_liste)
-#pareil, position nulle au départ
+# position nulle au départ. Là on ne peut pas prendre de premier échantillon, on n'en a pas
 pos_liste=integrateList(vit_liste, [Decimal(0), Decimal(0),Decimal(0),Decimal(0)])
 print ('pos_liste:',pos_liste)
 xyData = np.asarray(pos_liste)[:,[1,2]]
 print ('xyData:',xyData)
-# plt.xlabel('x')
-# plt.ylabel('y')
-# x, y = xyData.T
-# plt.plot(x,y)
+plt.xlabel('x')
+plt.ylabel('y')
+x, y = xyData.T
+plt.plot(x,y)
 #plt.scatter(*zip(*xyData))
 # plt.show()
-txData = np.asarray(pos_liste)[:,[0,3]]
-print ('txData:',txData)
-plt.xlabel('t')
-plt.ylabel('z')
-x, y = txData.T
-plt.plot(x,y)
+# txData = np.asarray(pos_liste)[:,[0,3]]
+# print ('txData:',txData)
+# plt.xlabel('t')
+# plt.ylabel('z')
+# x, y = txData.T
+# plt.plot(x,y)
 #plt.scatter(*zip(*xyData))
 plt.show()
